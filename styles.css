@@ -63,3 +63,8 @@ button:hover {
 .start-btn:hover, .finish-btn:hover {
     background-color: #219150;
 }
+
+.upload {
+    display: block;
+    margin-top: 10px;
+}
