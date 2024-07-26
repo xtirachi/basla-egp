@@ -37,3 +37,29 @@ button {
 button:hover {
     background-color: #2980b9;
 }
+
+.activity-box {
+    border: 2px solid #3498db;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.timer {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.start-btn, .finish-btn {
+    background-color: #27ae60;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.start-btn:hover, .finish-btn:hover {
+    background-color: #219150;
+}
