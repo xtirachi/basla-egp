@@ -7,38 +7,49 @@ document.addEventListener('DOMContentLoaded', function() {
     const finishButtons = document.querySelectorAll('.finish-btn');
     const uploadButtons = document.querySelectorAll('.upload-btn');
     const timers = document.querySelectorAll('.timer');
-    
+
     startButtons.forEach((button, index) => {
-        button.addEventListener('click', () => startTimer(timers[index]));
+        const activityId = button.closest('.activity-box').getAttribute('data-activity-id');
+        if (localStorage.getItem(`${activityId}_started`)) {
+            button.disabled = true;
+        }
+        button.addEventListener('click', () => startTimer(timers[index], activityId));
     });
-    
+
     finishButtons.forEach((button, index) => {
-        button.addEventListener('click', () => stopTimer(timers[index]));
+        const activityId = button.closest('.activity-box').getAttribute('data-activity-id');
+        button.addEventListener('click', () => stopTimer(timers[index], activityId));
     });
 
     uploadButtons.forEach((button, index) => {
-        button.addEventListener('click', () => uploadFile(index));
+        const activityId = button.closest('.activity-box').getAttribute('data-activity-id');
+        if (localStorage.getItem(`${activityId}_uploaded`)) {
+            button.disabled = true;
+        }
+        button.addEventListener('click', () => uploadFile(index, activityId));
     });
 });
 
 let interval;
 let startTime;
 
-function startTimer(timerElement) {
+function startTimer(timerElement, activityId) {
     startTime = Date.now();
+    localStorage.setItem(`${activityId}_started`, true);
     interval = setInterval(() => {
         const elapsedTime = Date.now() - startTime;
         timerElement.textContent = formatTime(elapsedTime);
     }, 1000);
 }
 
-function stopTimer(timerElement) {
+function stopTimer(timerElement, activityId) {
     clearInterval(interval);
     const elapsedTime = Date.now() - startTime;
     const formattedTime = formatTime(elapsedTime);
+    timerElement.textContent = formattedTime;
     const ixtiraCode = prompt("İxtiraçı kodunu daxil edin:");
     if (ixtiraCode) {
-        logActivity(timerElement.closest('.activity-box'), formattedTime, ixtiraCode);
+        logActivity(timerElement.closest('.activity-box'), formattedTime, ixtiraCode, activityId);
     }
 }
 
@@ -54,7 +65,7 @@ function pad(num) {
     return num.toString().padStart(2, '0');
 }
 
-function logActivity(activityBox, timeSpent, ixtiraCode) {
+function logActivity(activityBox, timeSpent, ixtiraCode, activityId) {
     const theme = document.querySelector('header h1').textContent;
     const activity = activityBox.querySelector('h2').textContent;
     const data = {
@@ -72,7 +83,7 @@ function logActivity(activityBox, timeSpent, ixtiraCode) {
     .catch(error => console.error('Error:', error));
 }
 
-function uploadFile(index) {
+function uploadFile(index, activityId) {
     const fileInput = document.querySelectorAll('.upload')[index];
     const file = fileInput.files[0];
     if (file) {
@@ -94,6 +105,8 @@ function uploadFile(index) {
                 .then(response => response.json())
                 .then(result => {
                     alert('File uploaded successfully: ' + result.fileUrl);
+                    localStorage.setItem(`${activityId}_uploaded`, true);
+                    document.querySelectorAll('.upload-btn')[index].disabled = true;
                 })
                 .catch(error => console.error('Error:', error));
             };
