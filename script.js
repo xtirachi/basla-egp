@@ -64,7 +64,20 @@ function logActivity(activityBox, timeSpent, ixtiraCode) {
         timeSpent: timeSpent,
         ixtiraCode: ixtiraCode
     };
-    google.script.run.uploadFile(data);
+    fetch('https://script.google.com/macros/s/AKfycby3oe21E18BiocCPdJGR-UxTbuLRZ4N82X-48DJT6cCStL9aoftmJk_jcdG3HvbIliP/exec', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+        console.log('Activity logged:', result);
+    })
+    .catch(error => {
+        console.error('Error logging activity:', error);
+    });
 }
 
 function uploadFile(index) {
@@ -73,15 +86,31 @@ function uploadFile(index) {
     if (file) {
         const reader = new FileReader();
         reader.onloadend = function() {
+            const ixtiraCode = prompt("İxtiraçı kodunu daxil edin:");
+    if (ixtiraCode) {
+        logActivity(timerElement.closest('.activity-box'), formattedTime, ixtiraCode);
             const base64 = reader.result.split(',')[1];
             const data = {
                 fileName: file.name,
                 mimeType: file.type,
-                base64: base64
+                base64: base64,
+                theme: document.querySelector('header h1').textContent,
+                activity: document.querySelectorAll('.activity-box h2')[index].textContent
             };
-            google.script.run.withSuccessHandler((fileUrl) => {
-                alert('File uploaded successfully: ' + fileUrl);
-            }).uploadFile(data);
+            fetch('https://script.google.com/macros/s/AKfycby3oe21E18BiocCPdJGR-UxTbuLRZ4N82X-48DJT6cCStL9aoftmJk_jcdG3HvbIliP/exec', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                alert('File uploaded successfully: ' + result.fileUrl);
+            })
+            .catch(error => {
+                console.error('Error uploading file:', error);
+            });
         };
         reader.readAsDataURL(file);
     }
