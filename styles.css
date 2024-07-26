@@ -1,43 +1,39 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f8ff;
-    color: #333;
     text-align: center;
+    color: #333;
 }
 
-.hidden {
-    display: none;
-}
-
-.main-page, .theme-page, .gallery-page {
+header {
+    background-color: #f39c12;
     padding: 20px;
+}
+
+header img {
+    width: 100px;
+}
+
+h1 {
+    color: #2c3e50;
+}
+
+main {
+    margin: 50px auto;
+    width: 80%;
 }
 
 button {
-    background-color: #008CBA;
+    background-color: #3498db;
     color: white;
-    padding: 15px 32px;
-    text-align: center;
-    font-size: 16px;
-    margin: 10px;
+    padding: 15px 25px;
+    margin: 15px;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
+    font-size: 18px;
 }
 
 button:hover {
-    background-color: #005f6b;
-}
-
-.activity-box {
-    border: 1px solid #ddd;
-    padding: 20px;
-    margin: 10px 0;
-    border-radius: 8px;
-    background-color: #fff;
-}
-
-.timer {
-    font-size: 18px;
-    margin: 10px 0;
+    background-color: #2980b9;
 }
