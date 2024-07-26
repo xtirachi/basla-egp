@@ -5,6 +5,7 @@ function navigateTo(page) {
 document.addEventListener('DOMContentLoaded', function() {
     const startButtons = document.querySelectorAll('.start-btn');
     const finishButtons = document.querySelectorAll('.finish-btn');
+    const uploadButtons = document.querySelectorAll('.upload-btn');
     const timers = document.querySelectorAll('.timer');
     
     startButtons.forEach((button, index) => {
@@ -13,6 +14,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     finishButtons.forEach((button, index) => {
         button.addEventListener('click', () => stopTimer(timers[index]));
+    });
+
+    uploadButtons.forEach((button, index) => {
+        button.addEventListener('click', () => uploadFile(index));
     });
 });
 
@@ -32,7 +37,10 @@ function stopTimer(timerElement) {
     const elapsedTime = Date.now() - startTime;
     const formattedTime = formatTime(elapsedTime);
     timerElement.textContent = formattedTime;
-    alert(`Time spent: ${formattedTime}`);
+    const ixtiraCode = prompt("İxtiraçı kodunu daxil edin:");
+    if (ixtiraCode) {
+        logActivity(timerElement.closest('.activity-box'), formattedTime, ixtiraCode);
+    }
 }
 
 function formatTime(ms) {
@@ -45,4 +53,36 @@ function formatTime(ms) {
 
 function pad(num) {
     return num.toString().padStart(2, '0');
+}
+
+function logActivity(activityBox, timeSpent, ixtiraCode) {
+    const theme = document.querySelector('header h1').textContent;
+    const activity = activityBox.querySelector('h2').textContent;
+    const data = {
+        theme: theme,
+        activity: activity,
+        timeSpent: timeSpent,
+        ixtiraCode: ixtiraCode
+    };
+    google.script.run.uploadFile(data);
+}
+
+function uploadFile(index) {
+    const fileInput = document.querySelectorAll('.upload')[index];
+    const file = fileInput.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onloadend = function() {
+            const base64 = reader.result.split(',')[1];
+            const data = {
+                fileName: file.name,
+                mimeType: file.type,
+                base64: base64
+            };
+            google.script.run.withSuccessHandler((fileUrl) => {
+                alert('File uploaded successfully: ' + fileUrl);
+            }).uploadFile(data);
+        };
+        reader.readAsDataURL(file);
+    }
 }
