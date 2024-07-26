@@ -1,112 +1,134 @@
 /* General Styles */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f8f9fa;
-    color: #343a40;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 header {
-    background-color: #007bff;
-    color: white;
+    background-color: #ffffff;
+    width: 100%;
     padding: 20px 0;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 header img {
     width: 80px;
-    margin-bottom: 10px;
 }
 
 h1 {
-    margin: 0;
-    font-size: 2rem;
+    color: #2c3e50;
+    font-size: 24px;
+    margin: 10px 0;
 }
 
 main {
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
+    padding: 20px;
 }
 
 button {
-    background-color: #007bff;
+    background-color: #3498db;
     color: white;
-    padding: 10px 20px;
-    margin: 10px 0;
+    padding: 15px 25px;
+    margin: 15px;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #2980b9;
+    transform: scale(1.05);
 }
 
 .activity-box {
-    background-color: white;
-    border: 1px solid #dee2e6;
-    border-radius: 8px;
+    background-color: #ffffff;
+    border: 2px solid #3498db;
+    border-radius: 15px;
     padding: 20px;
     margin: 20px 0;
+    width: 100%;
+    max-width: 800px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .activity-box h2 {
-    margin-top: 0;
-    font-size: 1.5rem;
+    color: #2c3e50;
+    font-size: 20px;
+    margin-bottom: 10px;
 }
 
 .timer {
-    font-size: 1.25rem;
-    margin: 10px 0;
+    font-size: 32px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #e74c3c;
 }
 
 .start-btn, .finish-btn, .upload-btn, .back-btn {
-    background-color: #28a745;
+    background-color: #27ae60;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .start-btn:hover, .finish-btn:hover, .upload-btn:hover, .back-btn:hover {
-    background-color: #218838;
+    background-color: #219150;
+    transform: scale(1.05);
 }
 
 .upload {
-    margin-top: 10px;
     display: block;
+    margin-top: 10px;
 }
 
-.back-btn {
-    background-color: #6c757d;
-}
-
-.back-btn:hover {
-    background-color: #5a6268;
-}
-
-/* Responsive Styles */
 @media (max-width: 768px) {
-    main {
-        padding: 10px;
+    h1 {
+        font-size: 20px;
     }
-
+    
     button {
-        padding: 8px 16px;
-        font-size: 0.875rem;
+        padding: 12px 20px;
+        font-size: 14px;
     }
-
+    
     .activity-box {
         padding: 15px;
     }
-
+    
     .activity-box h2 {
-        font-size: 1.25rem;
+        font-size: 18px;
     }
-
+    
     .timer {
-        font-size: 1rem;
+        font-size: 28px;
+    }
+    
+    .start-btn, .finish-btn, .upload-btn, .back-btn {
+        padding: 8px 16px;
+        font-size: 12px;
     }
 }
