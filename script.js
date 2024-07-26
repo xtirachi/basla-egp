@@ -64,7 +64,7 @@ function logActivity(activityBox, timeSpent, ixtiraCode) {
         timeSpent: timeSpent,
         ixtiraCode: ixtiraCode
     };
-    fetch('https://script.google.com/macros/s/AKfycby3oe21E18BiocCPdJGR-UxTbuLRZ4N82X-48DJT6cCStL9aoftmJk_jcdG3HvbIliP/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbw91eme1q3tCcZNPGPK4knUuQIrUeJt1imIp1SmZIN4XYjy-g-kU4T8mE7eiN4MIoyM/exec', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -86,9 +86,6 @@ function uploadFile(index) {
     if (file) {
         const reader = new FileReader();
         reader.onloadend = function() {
-            const ixtiraCode = prompt("İxtiraçı kodunu daxil edin:");
-    if (ixtiraCode) {
-        logActivity(timerElement.closest('.activity-box'), formattedTime, ixtiraCode);
             const base64 = reader.result.split(',')[1];
             const data = {
                 fileName: file.name,
@@ -97,7 +94,7 @@ function uploadFile(index) {
                 theme: document.querySelector('header h1').textContent,
                 activity: document.querySelectorAll('.activity-box h2')[index].textContent
             };
-            fetch('https://script.google.com/macros/s/AKfycby3oe21E18BiocCPdJGR-UxTbuLRZ4N82X-48DJT6cCStL9aoftmJk_jcdG3HvbIliP/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbw91eme1q3tCcZNPGPK4knUuQIrUeJt1imIp1SmZIN4XYjy-g-kU4T8mE7eiN4MIoyM/exec', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
