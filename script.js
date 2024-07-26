@@ -1,5 +1,6 @@
-function navigateTo(theme) {
-    window.location.href = `${theme}.html`;
+function navigateTo(page) {
+    document.querySelectorAll('.page').forEach(page => page.style.display = 'none');
+    document.getElementById(`${page}-page`).style.display = 'block';
 }
 
 document.addEventListener('DOMContentLoaded', function() {
