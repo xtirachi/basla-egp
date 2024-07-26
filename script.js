@@ -6,6 +6,7 @@ function navigateTo(page) {
 document.addEventListener('DOMContentLoaded', function() {
     const startButtons = document.querySelectorAll('.start-btn');
     const finishButtons = document.querySelectorAll('.finish-btn');
+    const uploadInputs = document.querySelectorAll('.upload');
     const timers = document.querySelectorAll('.timer');
     
     startButtons.forEach((button, index) => {
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     finishButtons.forEach((button, index) => {
-        button.addEventListener('click', () => stopTimer(timers[index]));
+        button.addEventListener('click', () => stopTimer(timers[index], uploadInputs[index], index));
     });
 });
 
@@ -28,12 +29,19 @@ function startTimer(timerElement) {
     }, 1000);
 }
 
-function stopTimer(timerElement) {
+function stopTimer(timerElement, uploadInput, activityIndex) {
     clearInterval(interval);
     const elapsedTime = Date.now() - startTime;
     const formattedTime = formatTime(elapsedTime);
     timerElement.textContent = formattedTime;
-    alert(`Time spent: ${formattedTime}`);
+
+    const ixtiraciKodu = prompt('İxtiraçı kodunu daxil edin:');
+    if (ixtiraciKodu) {
+        const theme = document.querySelector('h1').textContent;
+        const activity = document.querySelectorAll('.activity-box h2')[activityIndex].textContent;
+
+        uploadFile(uploadInput.files[0], theme, activity, formattedTime, ixtiraciKodu);
+    }
 }
 
 function formatTime(ms) {
@@ -46,4 +54,35 @@ function formatTime(ms) {
 
 function pad(num) {
     return num.toString().padStart(2, '0');
+}
+
+function uploadFile(file, theme, activity, timeSpent, ixtiraciKodu) {
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        const data = {
+            base64: event.target.result.split(',')[1],
+            mimeType: file.type,
+            fileName: file.name,
+            theme: theme,
+            activity: activity,
+            timeSpent: timeSpent,
+            ixtiraciKodu: ixtiraciKodu
+        };
+        
+        google.script.run
+            .withSuccessHandler(fileUrl => {
+                alert(`File uploaded successfully: ${fileUrl}`);
+            })
+            .uploadFile(data);
+    };
+    reader.readAsDataURL(file);
+}
+
+function logActivity(theme, activity, timeSpent, ixitiraCode) {
+    google.script.run.logActivity({
+        theme: theme,
+        activity: activity,
+        timeSpent: timeSpent,
+        ixitiraCode: ixitiraCode
+    });
 }
