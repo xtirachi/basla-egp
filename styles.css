@@ -50,7 +50,7 @@ button:hover {
     margin-bottom: 10px;
 }
 
-.start-btn, .finish-btn {
+.start-btn, .finish-btn, .upload-btn, .back-btn {
     background-color: #27ae60;
     color: white;
     padding: 10px 20px;
@@ -60,7 +60,7 @@ button:hover {
     margin: 5px;
 }
 
-.start-btn:hover, .finish-btn:hover {
+.start-btn:hover, .finish-btn:hover, .upload-btn:hover, .back-btn:hover {
     background-color: #219150;
 }
 
