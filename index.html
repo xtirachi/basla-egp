@@ -3,35 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Misir İncəsənət və Yaradıcılıq Seti</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Activity Web App</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <img src="https://i.ibb.co/7XNQPGC/logo.png" alt="Logo" class="logo">
-        <h1>Misir İncəsənət və Yaradıcılıq Seti</h1>
-    </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Ana Səhifə</a></li>
-            <li><a href="activities.html">Fəaliyyətlər</a></li>
-            <li><a href="gallery.html">Qalereya</a></li>
-            <li><a href="rewards.html">Mükafatlar</a></li>
-            <li><a href="contact.html">Əlaqə</a></li>
-        </ul>
-    </nav>
-    <main>
-        <section id="news">
-            <h2>Xəbərlər</h2>
-            <p>Burada son xəbərlər və yeniliklər olacaq.</p>
-        </section>
-        <section id="info">
-            <h2>Məlumat</h2>
-            <p>Bu veb sayt Misir İncəsənət və Yaradıcılıq Seti fəaliyyətlərini idarə etmək üçün nəzərdə tutulmuşdur.</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Misir İncəsənət və Yaradıcılıq Seti. Bütün hüquqlar qorunur.</p>
-    </footer>
+    <div class="main-page">
+        <h1>Activity Web App</h1>
+        <button onclick="navigateTo('steam')">STEAM və İnnovasiya</button>
+        <button onclick="navigateTo('experiment')">Eksperiment və Tədqiqat</button>
+        <button onclick="navigateTo('arts')">İncəsənət və Yaradıcılıq</button>
+        <button onclick="navigateTo('heritage')">Mədəni İrs və Səyahət</button>
+        <button onclick="navigateTo('gallery')">Qalereya</button>
+    </div>
+    
+    <div id="theme-page" class="hidden">
+        <h1 id="theme-title"></h1>
+        <div id="activities-list"></div>
+        <button onclick="navigateBack()">Geri</button>
+    </div>
+    
+    <div id="gallery-page" class="hidden">
+        <h1>Yükləmələr Qalereyası</h1>
+        <div id="gallery"></div>
+        <button onclick="navigateBack()">Geri</button>
+    </div>
 </body>
 </html>
