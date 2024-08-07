@@ -80,7 +80,7 @@
                 timeSpent: timeSpent,
                 ixtiraCode: ixtiraCode
             };
-            fetch('https://script.google.com/macros/s/AKfycby3oe21E18BiocCPdJGR-UxTbuLRZ4N82X-48DJT6cCStL9aoftmJk_jcdG3HvbIliP/exec', {
+            fetch('https://script.google.com/macros/s/AKfycbzOJpe60tv2zJ-mNNo0FhJx9Ox3KQKkpH83sdp0OTpNZCiNxILWDMuGjcgS5i6eSepH/exec', {
                 method: 'POST',
                 body: JSON.stringify(data)
             })
@@ -104,7 +104,7 @@
                             base64: base64,
                             ixtiraCode: ixtiraCode
                         };
-                        fetch('https://script.google.com/macros/s/AKfycby3oe21E18BiocCPdJGR-UxTbuLRZ4N82X-48DJT6cCStL9aoftmJk_jcdG3HvbIliP/exec', {
+                        fetch('https://script.google.com/macros/s/AKfycbzOJpe60tv2zJ-mNNo0FhJx9Ox3KQKkpH83sdp0OTpNZCiNxILWDMuGjcgS5i6eSepH/exec', {
                             method: 'POST',
                             body: JSON.stringify(data)
                         })
