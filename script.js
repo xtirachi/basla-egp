@@ -5,7 +5,6 @@
         document.addEventListener('DOMContentLoaded', function() {
             const startButtons = document.querySelectorAll('.start-btn');
             const finishButtons = document.querySelectorAll('.finish-btn');
-            const uploadButtons = document.querySelectorAll('.upload-btn');
             const timers = document.querySelectorAll('.timer');
             const audio = document.querySelector("audio");
 
