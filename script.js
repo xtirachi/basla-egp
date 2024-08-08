@@ -95,6 +95,7 @@ function navigateTo(page) {
 
             const file = fileInput.files[0];
             if (file) {
+                        console.log("File selected: ", file.name);
                 const ixtiraCode = prompt("İxtiraçı kodunu daxil edin:");
                 if (ixtiraCode) {
                     const reader = new FileReader();
@@ -106,6 +107,7 @@ function navigateTo(page) {
                             base64: base64,
                             ixtiraCode: ixtiraCode
                         };
+                                 console.log("Uploading file: ", data);
                         fetch('https://script.google.com/macros/s/AKfycbzOJpe60tv2zJ-mNNo0FhJx9Ox3KQKkpH83sdp0OTpNZCiNxILWDMuGjcgS5i6eSepH/exec', {
                             method: 'POST',
                             body: JSON.stringify(data)
