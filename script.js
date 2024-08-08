@@ -31,7 +31,7 @@
 
             uploadButtons.forEach((button, index) => {
                 button.addEventListener('click', () => {
-                    const fileInput = document.querySelectorAll('.upload')[index];
+                    const fileInput = document.querySelectorAll('.upload-btn')[index];
                     fileInput.click();
                     fileInput.addEventListener('change', () => uploadFile(index));
                 });
