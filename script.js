@@ -31,10 +31,7 @@
             });
 
             uploadButtons.forEach((button, index) => {
-                button.addEventListener('click', () => {
-                    const fileInput = document.querySelectorAll('.upload')[index];
-                    fileInput.click();
-                    fileInput.addEventListener('change', () => uploadFile(index));
+                button.addEventListener('click', () => uploadFile(index));
                 });
             });
         });
