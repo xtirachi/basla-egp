@@ -1,4 +1,4 @@
- function navigateTo(page) {
+function navigateTo(page) {
             window.location.href = page;
         }
 
@@ -7,10 +7,11 @@
             const finishButtons = document.querySelectorAll('.finish-btn');
             const uploadButtons = document.querySelectorAll('.upload-btn');
             const timers = document.querySelectorAll('.timer');
-            const audio = document.querySelector("audio");
+            const audio = document.querySelector("#audio");
 
-          const playButton = document.getElementById("play-button");
+            const playButton = document.getElementById("play-button");
             const pauseButton = document.getElementById("pause-button");
+            const fileInput = document.getElementById('file-input');
 
             if (playButton && pauseButton) {
                 playButton.addEventListener("click", () => {
@@ -30,9 +31,8 @@
                 button.addEventListener('click', () => stopTimer(timers[index]));
             });
 
-            uploadButtons.forEach((button, index) => {
-                button.addEventListener('click', () => uploadFile(index));
-                });
+            uploadButtons.forEach((button) => {
+                button.addEventListener('click', () => uploadFile(fileInput));
             });
         });
 
@@ -87,8 +87,12 @@
             .catch(error => console.error('Error:', error));
         }
 
-        function uploadFile(index) {
-                        const fileInput = document.getElementById('file-input');
+        function uploadFile(fileInput) {
+            if (!fileInput) {
+                alert('File input element not found');
+                return;
+            }
+
             const file = fileInput.files[0];
             if (file) {
                 const ixtiraCode = prompt("İxtiraçı kodunu daxil edin:");
@@ -114,5 +118,7 @@
                     };
                     reader.readAsDataURL(file);
                 }
+            } else {
+                alert('No file selected');
             }
         }
