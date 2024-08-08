@@ -22,15 +22,6 @@
                 });
             }
 
-
-            playButton.addEventListener("click", () => {
-                audio.play();
-            });
-
-            pauseButton.addEventListener("click", () => {
-                audio.pause();
-            });
-
             startButtons.forEach((button, index) => {
                 button.addEventListener('click', () => startTimer(timers[index]));
             });
