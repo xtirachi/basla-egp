@@ -88,7 +88,7 @@
         }
 
         function uploadFile(index) {
-            
+                        const fileInput = document.getElementById('file-input');
             const file = fileInput.files[0];
             if (file) {
                 const ixtiraCode = prompt("İxtiraçı kodunu daxil edin:");
