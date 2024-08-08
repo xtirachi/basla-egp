@@ -5,6 +5,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const startButtons = document.querySelectorAll('.start-btn');
             const finishButtons = document.querySelectorAll('.finish-btn');
+            const uploadButtons = document.querySelectorAll('.upload-btn');
             const timers = document.querySelectorAll('.timer');
             const audio = document.querySelector("audio");
 
@@ -31,7 +32,7 @@
 
             uploadButtons.forEach((button, index) => {
                 button.addEventListener('click', () => {
-                    const fileInput = document.querySelectorAll('.upload-btn')[index];
+                    const fileInput = document.querySelectorAll('.upload')[index];
                     fileInput.click();
                     fileInput.addEventListener('change', () => uploadFile(index));
                 });
