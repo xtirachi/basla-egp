@@ -4,71 +4,122 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mədəni İrs</title>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <img src="https://i.ibb.co/7XNQPGC/logo.png" alt="Logo">
-        <h1>Mədəni İrs</h1>
-    </header>
-    <main>
-        <button class="back-btn" onclick="navigateTo('index.html')">Ana Səhifə</button>
-        <div class="activity-container">
-            <div class="activity-box">
-                <h2>Virtual səyahət</h2>
-                <p>Səyahətə çıxmaq və Misir mədəniyyətini kəşf etmək üçün virtual səyahətə başlayın. Misir haqqında öyrənin və macəradan zövq alın. <br>Bu fəaliyyətin təlimatlarını Mədəni İrs və səyahət seti, 4-cü səhifədə oxuya bilərsiniz.</p>
-                <audio controls>
-                    <source src="https://github.com/xtirachi/basla-egp/raw/main/Sfinks_%20Yunan%20v%C9%99%20Misir%20%C6%8Ffsan%C9%99si.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-             
-                <div class="timer">00:00:00</div>
-                <button class="start-btn">Başla</button>
-                <button class="finish-btn">Bitir</button>
-                <input type="file" id="file-input" class="upload">
-                <button class="upload-btn">Yüklə</button>
+<header>
+    <img src="https://i.ibb.co/7XNQPGC/logo.png" alt="Logo">
+    <h1>Mədəni İrs</h1>
+</header>
+<main>
+    <button class="back-btn" onclick="navigateTo('index.html')">Ana Səhifə</button>
+    <div class="view-switcher-container">
+        <div class="view-switcher-elem">
+            <button id="gridViewButton" onclick="gridView()">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAd0lEQVR4nGNgYGBgMJl519Rk5k0X/PiuKUgtyeqNpt0xNplx+z8x2HjmbSNS1TMYT7/tAOUU43KNMUgOpGb6bQdS1SMsAHFwAGMkNaSqH7VgRAXRTBolUyNaZzSaFxUgMFoWmYyWRcZDIydPH/IWzBwti25iLYsAuUiFLhynTrMAAAAASUVORK5CYII=">
+            </button>
+        </div>
+        <div class="view-switcher-elem">
+            <button id="sliderViewButton" onclick="sliderView()">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAA6ElEQVR4nO1VvQrCQAzuIwh9DnFI+mCC4trRVYskTkLVh3HxZymYUFwdddNJSZ2td3IdlAYyHHz5vrvcXb4o+svoLU4dYF0B6xVZH3VpGCBdWo2zgJEj6w1YZ0g6rssKU2El9xG4IsnUFW9YJLk4C1RHJ02dN0SaWk0r8H2LgKQPrNtQdwCkO+N8LeZlF0nv9jRDCSDpuuKcl10j2wDJOcmKOJRAkhWxcRp38wLQdIsskI9DYN0HE2A5IOngbUH7kz9G4y0C33HNknmNa3MoMxEknQDLqC4N4204L8uU3NkyWXIvy/ypeAK8JGT/eks4pQAAAABJRU5ErkJggg==">
+            </button>
+        </div>
+    </div>
+    <div id="viewContainer" class="activity-container swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="box">
+                    <div class="activity-box">
+                        <h2>Virtual səyahət</h2>
+                        <div>
+                            <p>Səyahətə çıxmaq və Misir mədəniyyətini kəşf etmək üçün virtual səyahətə başlayın. Misir
+                                haqqında
+                                öyrənin və macəradan zövq alın.</p>
+                            <p>Bu fəaliyyətin təlimatlarını Mədəni İrs və səyahət seti,
+                                4-cü
+                                səhifədə oxuya bilərsiniz.</p>
+                        </div>
+                        <audio controls>
+                            <source src="https://github.com/xtirachi/basla-egp/raw/main/Sfinks_%20Yunan%20v%C9%99%20Misir%20%C6%8Ffsan%C9%99si.mp3"
+                                    type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+
+                        <div class="timer">00:00:00</div>
+                        <button class="start-btn">Başla</button>
+                        <button class="finish-btn">Bitir</button>
+                        <input type="file" id="file-input" class="upload">
+                        <button class="upload-btn">Yüklə</button>
+                    </div>
+                </div>
             </div>
-            <div class="activity-box">
-                <h2>Sfinksin içində xəritə tapma</h2>
-                <p>Sfinksin içində gizli xəritəni tapmaq üçün araşdırma aparın. Bu xəritə sizi yeni macəralara aparacaq. <br>Bu fəaliyyətin təlimatlarını Mədəni İrs və səyahət seti, 5-ci səhifədə oxuya bilərsiniz.</p>
-                <audio controls>
-                    <source src="audio/map-sphinx.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-                <div class="timer">00:00:00</div>
-                <button class="start-btn">Başla</button>
-                <button class="finish-btn">Bitir</button>
-                <input type="file" class="upload">
-                <button class="upload-btn">Yüklə</button>
+            <div class="swiper-slide">
+                <div class="box">
+                    <div class="activity-box">
+                        <h2>Sfinksin içində xəritə tapma</h2>
+                        <p>Sfinksin içində gizli xəritəni tapmaq üçün araşdırma aparın. Bu xəritə sizi yeni macəralara
+                            aparacaq.
+                            <br>Bu fəaliyyətin təlimatlarını Mədəni İrs və səyahət seti, 5-ci səhifədə oxuya bilərsiniz.
+                        </p>
+                        <audio controls>
+                            <source src="audio/map-sphinx.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="timer">00:00:00</div>
+                        <button class="start-btn">Başla</button>
+                        <button class="finish-btn">Bitir</button>
+                        <input type="file" class="upload">
+                        <button class="upload-btn">Yüklə</button>
+                    </div>
+                </div>
             </div>
-            <div class="activity-box">
-                <h2>Misir haqqında araşdırma</h2>
-                <p>Misir tarixi və mədəniyyəti haqqında dərin araşdırma aparın və yeni məlumatlar öyrənin. <br>Bu fəaliyyətin təlimatlarını Mədəni İrs və səyahət seti, 6-cı səhifədə oxuya bilərsiniz.</p>
-                <audio controls>
-                    <source src="audio/research-egypt.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-                <div class="timer">00:00:00</div>
-                <button class="start-btn">Başla</button>
-                <button class="finish-btn">Bitir</button>
-                <input type="file" class="upload">
-                <button class="upload-btn">Yüklə</button>
+            <div class="swiper-slide">
+                <div class="box">
+                    <div class="activity-box">
+                        <h2>Misir haqqında araşdırma</h2>
+                        <p>Misir tarixi və mədəniyyəti haqqında dərin araşdırma aparın və yeni məlumatlar öyrənin. <br>Bu
+                            fəaliyyətin təlimatlarını Mədəni İrs və səyahət seti, 6-cı səhifədə oxuya bilərsiniz.</p>
+                        <audio controls>
+                            <source src="audio/research-egypt.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="timer">00:00:00</div>
+                        <button class="start-btn">Başla</button>
+                        <button class="finish-btn">Bitir</button>
+                        <input type="file" class="upload">
+                        <button class="upload-btn">Yüklə</button>
+                    </div>
+                </div>
             </div>
-            <div class="activity-box">
-                <h2>Qədim Misir yazısı (piktoqrafiya və heroqliflər)</h2>
-                <p>Qədim Misir yazılarını, piktoqrafiya və heroqlifləri öyrənin və onların necə işlədiyini başa düşün. <br>Bu fəaliyyətin təlimatlarını Mədəni İrs və səyahət seti, 7-ci səhifədə oxuya bilərsiniz.</p>
-                <audio controls>
-                    <source src="audio/egyptian-writing.mp3" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-                <div class="timer">00:00:00</div>
-                <button class="start-btn">Başla</button>
-                <button class="finish-btn">Bitir</button>
-                <input type="file" class="upload">
-                <button class="upload-btn">Yüklə</button>
+            <div class="swiper-slide">
+                <div class="box">
+                    <div class="activity-box">
+                        <h2>Qədim Misir yazısı (piktoqrafiya və heroqliflər)</h2>
+                        <p>Qədim Misir yazılarını, piktoqrafiya və heroqlifləri öyrənin və onların necə işlədiyini başa
+                            düşün.
+                            <br>Bu fəaliyyətin təlimatlarını Mədəni İrs və səyahət seti, 7-ci səhifədə oxuya bilərsiniz.
+                        </p>
+                        <audio controls>
+                            <source src="audio/egyptian-writing.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        <div class="timer">00:00:00</div>
+                        <button class="start-btn">Başla</button>
+                        <button class="finish-btn">Bitir</button>
+                        <input type="file" class="upload">
+                        <button class="upload-btn">Yüklə</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </main>
+        <div class="swiper-pagination"></div>
+    </div>
+</main>
 </body>
 </html>
