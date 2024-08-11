@@ -8,11 +8,12 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
     min-height: 100vh;
+    box-sizing: border-box;
 }
 
 header {
@@ -40,7 +41,9 @@ main {
     align-items: center;
     width: 100%;
     max-width: 1200px;
-    padding: 20px;
+    padding: 20px 0 20px 0;
+    box-sizing: border-box;
+    margin: auto;
 }
 
 p {
@@ -72,11 +75,12 @@ button:hover {
 }
 
 .activity-container {
-    display: flex;
-    overflow-x: scroll;
-    scroll-snap-type: x mandatory;
+    /*display: flex;*/
+    /*overflow-x: scroll;*/
+    /*scroll-snap-type: x mandatory;*/
     padding: 20px;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .activity-box {
@@ -84,13 +88,13 @@ button:hover {
     border: 2px solid #3498db;
     border-radius: 15px;
     padding: 20px;
-    margin: 20px;
-    width: 300px;
+    width: 350px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
     scroll-snap-align: start;
+    box-sizing: border-box;
 }
 
 .activity-box h2 {
@@ -138,52 +142,171 @@ audio {
     transform: scale(1.05);
 }
 
+.box {
+    /*padding: 15px;*/
+    /*margin: 10px;*/
+    display: flex;
+}
+
 .upload {
     display: block;
     margin-top: 10px;
+}
+
+.swiper {
+    width: 100%;
+}
+
+.swiper-slide {
+    width: 90%;
+    margin-bottom: 10px;
+    height: unset;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+
+.swiper-slide-prev {
+    display: flex;
+    justify-content: end;
+}
+
+.swiper-slide-next {
+    display: flex;
+    justify-content: start;
+}
+
+/*.swiper-slide-active > .box {*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*}*/
+
+.swiper-pagination {
+    margin-top: 5px;
+}
+
+.grid-view > .swiper-wrapper {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.grid-view .swiper-slide {
+    width: unset;
+    margin: 10px;
+}
+
+.grid-view .swiper-pagination {
+    display: none;
+}
+
+.view-switcher-container {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+}
+
+.view-switcher-container .view-switcher-elem {
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid #4EFFFA;
+    border-radius: 10px;
+    /*box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+}
+
+.view-switcher-container .view-switcher-elem:nth-child(1) {
+    margin-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    /*border-right: none;*/
+}
+
+.view-switcher-container .view-switcher-elem:nth-child(2) {
+    margin-left: 0;
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.view-switcher-container button {
+    background-color: unset;
+    color: unset;
+    padding: unset;
+    margin: unset;
+    border: none;
+    border-radius: unset;
+    font-size: unset;
+    font-weight: unset;
+    transition: unset;
+    box-shadow: unset;
+}
+
+.view-switcher-container button.disable {
+    cursor: default;
+}
+
+.view-switcher-container button.disable:hover {
+    cursor: default;
+    transform: unset;
 }
 
 @media (max-width: 768px) {
     h1 {
         font-size: 24px;
     }
-    
+
     p {
         font-size: 16px;
     }
-    
+
     button {
         padding: 12px 25px;
         font-size: 14px;
     }
-    
+
     .activity-container {
-        flex-direction: column;
-        overflow-y: auto;
+        /*flex-direction: column;*/
+        /*overflow-y: auto;*/
         width: 100%;
     }
-    
+
     .activity-box {
-        padding: 15px;
         width: 100%;
         max-width: 500px;
     }
-    
+
     .activity-box h2 {
         font-size: 20px;
     }
-    
+
     .activity-box p {
         font-size: 14px;
     }
-    
+
     .timer {
         font-size: 28px;
     }
-    
+
     .start-btn, .finish-btn, .upload-btn, .back-btn {
         padding: 8px 16px;
         font-size: 12px;
+    }
+
+    .grid-view.activity-container {
+        padding: unset;
+    }
+    .grid-view .swiper-slide {
+        width: 100%;
+        margin: 0;
+    }
+
+    .grid-view .box {
+        margin: 10px;
+    }
+}
+
+@media (max-width: 375px) {
+    audio {
+        width: 250px;
     }
 }
 /* You can style the audio player here */
